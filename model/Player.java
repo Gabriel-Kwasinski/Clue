@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 class Player {
     private int id;
@@ -37,6 +38,12 @@ class Player {
 
     void check_notepad (String block, String item, Boolean bool) {
         this.player_notepad.check_notepad(block, item, bool);
+    }
+
+    int[] throw_dice () {
+        Random randgen = new Random();
+        int[] dice_values = {randgen.nextInt(6) + 1, randgen.nextInt(6) + 1};
+        return dice_values;
     }
 
     void print_player_decks () {
