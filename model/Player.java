@@ -9,6 +9,8 @@ class Player {
     private ArrayList<Card> weapon_ply_cards  = new ArrayList<Card>();
     private ArrayList<Card> room_ply_cards    = new ArrayList<Card>();
 
+    private Notepad player_notepad;
+
     Player (int id) {
         this.id = id;
     }
@@ -17,7 +19,7 @@ class Player {
         return this.id;
     }
 
-    void insert_card(Card card) {
+    void insert_card (Card card) {
         if (card.get_type() == "suspect") {
             this.suspect_ply_cards.add(card);
         }
@@ -29,7 +31,15 @@ class Player {
         }
     }
 
-    void print_player_decks() {
+    void insert_notepad (Notepad ntpd) {
+        this.player_notepad = ntpd;
+    }
+
+    void check_notepad (String block, String item, Boolean bool) {
+        this.player_notepad.check_notepad(block, item, bool);
+    }
+
+    void print_player_decks () {
         System.out.printf("ID = %d\n", this.id);
         //suspect cards
         System.out.printf("suspect cards = {");
@@ -50,5 +60,9 @@ class Player {
         }
         System.out.printf("}\n");
         System.out.printf("\n");
+    }
+
+    void print_notepad () {
+        this.player_notepad.print_notepad();
     }
 }
