@@ -45,4 +45,15 @@ class Master {
             }
         }
     }
+
+    void distribute_notepads2players (Player[] players, Notepad[] all_notepads) {
+        if (players.length != all_notepads.length) { //error
+            System.out.println("Error. Number of players does not match number of notepads");
+            System.exit(0);
+        }
+        
+        for (int i = 0; i < players.length; i++) {
+            players[i].insert_notepad(all_notepads[i]);
+        }
+    }
 }
