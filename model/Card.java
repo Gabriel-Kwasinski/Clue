@@ -16,5 +16,4 @@ class Card {
     String get_type() {
         return this.type;
     }
-
 }

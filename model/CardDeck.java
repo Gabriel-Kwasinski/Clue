@@ -1,18 +1,19 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 class CardDeck {
-    protected HashMap<Integer, Card> deck = new HashMap<>();
+    protected ArrayList<Card> deck = new  ArrayList<Card>();
 
-    HashMap<Integer, Card> get_deck() {
+    ArrayList<Card> get_deck() {
         return this.deck;
     }
 
     void print_content() {
         System.out.printf("{");
-        for (HashMap.Entry<Integer, Card> entry : deck.entrySet()) {
-            System.out.printf("[%d] = %s, ", entry.getKey(), entry.getValue().value);
+        for (int i = 0; i < deck.size(); i++) {
+            System.out.printf("[%d] = %s, ", i, deck.get(i).get_value());
         }
         System.out.printf("}\n");
     }
