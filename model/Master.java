@@ -100,4 +100,29 @@ class Master {
         }
         return false;
     }
+
+    ArrayList<int[]> map_valid_moves(int[] curr_location, int[] dice_roll) {
+        ArrayList<int[]> valid_moves = new ArrayList<>();
+        
+        int n = dice_roll[0] + dice_roll[1];
+
+        int i, j;
+        for (i = (curr_location[0] - n); i <= (curr_location[0] + n); i++) {
+            if ((i < 0) || (i > 23)) {
+                continue;
+            }
+
+            for (j = (curr_location[0] - n); j <= (curr_location[0] + n); j++) {
+                if ((j < 0) || (j > 24)) {
+                    continue;
+                }
+
+                if (is_valid_move(curr_location, dice_roll, new int[] {i, j})) {
+                    valid_moves.add(new int[] {i, j});
+                }
+            }
+        }
+
+        return valid_moves;
+    }
 }
