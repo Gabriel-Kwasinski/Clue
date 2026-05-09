@@ -12,6 +12,8 @@ class Player {
 
     private Notepad player_notepad;
 
+    private Pawn player_pawn;
+
     Player (int id) {
         this.id = id;
     }
@@ -40,10 +42,22 @@ class Player {
         this.player_notepad.check_notepad(block, item, bool);
     }
 
+    void insert_pawn (Pawn pawn) {
+        this.player_pawn = pawn;
+    }
+
+    void print_pawn () {
+        System.out.println(this.player_pawn.get_type());
+    }
+
     int[] throw_dice () {
         Random randgen = new Random();
         int[] dice_values = {randgen.nextInt(6) + 1, randgen.nextInt(6) + 1};
         return dice_values;
+    }
+
+    void request2move_pawn(int[] new_location, int[] dice_roll, Master master) {
+        master.move_pawn(this.player_pawn, dice_roll, new_location);
     }
 
     void print_player_decks () {

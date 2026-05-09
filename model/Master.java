@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 class Master {
+    private Board board;
+
+    Master (Board board) {
+        this.board = board;
+    }
+
     void shuffle_deck (CardDeck deck2shuffle) {
         Random randgen = new Random(); //to generate random numbers
 
@@ -55,5 +61,43 @@ class Master {
         for (int i = 0; i < players.length; i++) {
             players[i].insert_notepad(all_notepads[i]);
         }
+    }
+
+    void move_pawn (Pawn player_pawn, int[] dice_roll, int[] new_location) {
+        if (is_valid_move(player_pawn.get_location(), dice_roll, new_location)) {
+            player_pawn.move(new_location);
+        }
+    }
+
+    boolean is_valid_move(int[] curr_location, int[] dice_roll, int[] new_location) {
+        //Given a pawn located on the board house (i, j)
+        //and a dice roll of value n,
+        // the pawn can be moved to any house:
+        // (i + a, j + b)
+        //such that |a| + |b| <= n, and (|a| + |b|) has the same parity of n.
+
+        if (board.get_house_value(new_location) == 1) {
+            return false;
+        }
+
+        int n = dice_roll[0] + dice_roll[1];
+        int a = new_location[0] - curr_location[0];
+        int b = new_location[1] - curr_location[1];
+
+        int sum = Math.abs(a) + Math.abs(b);
+
+        if (sum <= n) {
+            if (n % 2 == 0) {
+                if (sum % 2 == 0) {
+                    return true;
+                }
+            }
+            else {
+                if (sum % 2 != 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
