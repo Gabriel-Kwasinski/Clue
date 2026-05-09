@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Random;
 
 class Master {
