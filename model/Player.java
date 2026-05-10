@@ -86,4 +86,8 @@ class Player {
     void print_notepad () {
         this.player_notepad.print_notepad();
     }
+
+    Pawn get_pawn () {
+        return this.player_pawn;
+    }
 }
