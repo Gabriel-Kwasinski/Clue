@@ -126,4 +126,31 @@ class Master {
 
         return valid_moves;
     }
+
+    HashMap create_player_order_list (Player[] active_players) {
+        HashMap<Integer, Player> plyr_order = new HashMap<>();
+
+        for (int i = 0; i < active_players.length; i++) {
+            if (active_players[i].get_pawn().get_type() == "Srta. Scarlet") {
+                plyr_order.put(0, active_players[i]);
+            }
+            if (active_players[i].get_pawn().get_type() == "Coronel Mustard") {
+                plyr_order.put(1, active_players[i]);
+            }
+            if (active_players[i].get_pawn().get_type() == "Sra. White") {
+                plyr_order.put(2, active_players[i]);
+            }
+            if (active_players[i].get_pawn().get_type() == "Reverendo Green") {
+                plyr_order.put(3, active_players[i]);
+            }
+            if (active_players[i].get_pawn().get_type() == "Sra. Peacock") {
+                plyr_order.put(4, active_players[i]);
+            }
+            if (active_players[i].get_pawn().get_type() == "Professor Plum") {
+                plyr_order.put(5, active_players[i]);
+            }
+        }
+
+        return plyr_order;
+    }
 }
